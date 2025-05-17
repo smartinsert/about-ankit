@@ -1,11 +1,7 @@
 
-import Hero from "@/components/Hero";
-import SkillsSection from "@/components/SkillsSection";
 import ExperienceCard from "@/components/ExperienceCard";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 
-const Index = () => {
+const Experience = () => {
   const experiences = [
     {
       company: "Goldman Sachs",
@@ -28,18 +24,54 @@ const Index = () => {
         "Contributed in migrating and scaling the global settlements platforms BFF component to handle the extraordinary volume of daily transactions and 3K users on average. Implemented CORS pattern on an event-driven architecture, designing a high read-to-write ratio of 8:1 effectively.",
         "Developed a new settlement function for the global settlements platform, enabling efficient handling of transactions worth billions from existing and newly acquired sources."
       ]
+    },
+    {
+      company: "Fractal Analytics",
+      position: "Senior Engineer - Theremin",
+      duration: "April 2018 - May 2020",
+      location: "Mumbai, India",
+      responsibilities: [
+        "Leveraged Kafka to halve vendor API calls to 900 and reduced database update time from 2 hours to 20 minutes, thereby improving the availability of the API.",
+        "Engineered a high-performance PostgreSQL database for NSE and BSE securities data, enabling sub-10 second queries from a 150+ GB table.",
+        "Devised and implemented an event-driven algorithmic trading framework supporting live trading, paper trading, and backtesting, seamlessly integrated with our own database through APIs."
+      ]
+    },
+    {
+      company: "Wealth Technology and Services Pvt. Ltd.",
+      position: "Product Development Engineer",
+      duration: "June 2016 - August 2018",
+      location: "Mumbai, India",
+      responsibilities: [
+        "Designed a scalable investment enterprise solution to serve over 10,000 concurrent users, enabling B2B2C deployments for multiple brokers, including one of the largest in the country with AUM exceeding $200 million, all leveraging AWS."
+      ]
+    },
+    {
+      company: "Edelweiss Securities Ltd.",
+      position: "Quantitative Developer",
+      duration: "June 2016 - August 2018",
+      location: "Mumbai, India",
+      responsibilities: [
+        "Developed a low-latency, high-throughput algorithmic trading platform with a sub-20ms round trip time(to exchange and back)."
+      ]
+    },
+    {
+      company: "FlexTrade",
+      position: "Senior Software Engineer",
+      duration: "December 2012 - September 2015",
+      location: "Pune, India",
+      responsibilities: [
+        "Developed core trading system components handling order routing and execution."
+      ]
     }
   ];
 
   return (
     <div className="min-h-screen">
-      <Hero />
-      
-      <section className="py-12 bg-secondary">
+      <section className="py-12">
         <div className="container">
-          <h2 className="text-3xl font-bold mb-6">Featured Experience</h2>
+          <h1 className="text-4xl font-bold mb-8">Professional Experience</h1>
           <div className="space-y-6">
-            {experiences.slice(0, 2).map((exp, index) => (
+            {experiences.map((exp, index) => (
               <ExperienceCard
                 key={index}
                 company={exp.company}
@@ -50,48 +82,10 @@ const Index = () => {
               />
             ))}
           </div>
-          <div className="mt-8 text-center">
-            <Button variant="outline" asChild>
-              <Link to="/experience">View All Experience</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-      
-      <SkillsSection />
-      
-      <section className="py-12">
-        <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="max-w-xl">
-              <h2 className="text-3xl font-bold mb-4">Let's Connect</h2>
-              <p className="text-muted-foreground mb-6">
-                Whether you want to discuss a project, have a question, or just want to say hello,
-                feel free to reach out. I'm always open to new opportunities and collaborations.
-              </p>
-              <Button asChild>
-                <Link to="/contact">Contact Me</Link>
-              </Button>
-            </div>
-            <div className="relative w-full max-w-sm h-60 bg-primary/10 rounded-lg overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg className="w-16 h-16 text-primary opacity-20" 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>
   );
 };
 
-export default Index;
+export default Experience;

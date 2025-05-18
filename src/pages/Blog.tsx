@@ -1,20 +1,23 @@
-
-import { useState, useEffect } from "react";
-import BlogCard from "@/components/BlogCard";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
-import { blogService } from "@/services/blogService";
-import { BlogPost } from "@/types/blog";
-import { useQuery } from "@tanstack/react-query";
+import { useState, useEffect } from 'react';
+import BlogCard from '@/components/blog-card';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
+import { blogService } from '@/services/blog-service';
+import { BlogPost } from '@/types/blog';
+import { useQuery } from '@tanstack/react-query';
 
 const Blog = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeCategory, setActiveCategory] = useState('All');
   const { toast } = useToast();
-  
+
   // Fetch blog posts using React Query
-  const { data: blogPosts = [], isLoading, error } = useQuery({
+  const {
+    data: blogPosts = [],
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ['blogPosts'],
     queryFn: blogService.getAllPosts,
   });
@@ -22,9 +25,9 @@ const Blog = () => {
   useEffect(() => {
     if (error) {
       toast({
-        title: "Error",
-        description: "Failed to load blog posts. Please try again later.",
-        variant: "destructive",
+        title: 'Error',
+        description: 'Failed to load blog posts. Please try again later.',
+        variant: 'destructive',
       });
     }
   }, [error, toast]);
@@ -34,54 +37,59 @@ const Blog = () => {
   };
 
   const filterPosts = () => {
-    return blogPosts
-      .filter((post) => 
-        (activeCategory === "All" || post.category === activeCategory) &&
-        (post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()))
-      );
+    return blogPosts.filter(
+      (post) =>
+        (activeCategory === 'All' || post.category === activeCategory) &&
+        (post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
   };
 
   // Get unique categories
-  const categories = ["All", ...new Set(blogPosts.map((post: BlogPost) => post.category))];
+  const categories = [
+    'All',
+    ...new Set(blogPosts.map((post: BlogPost) => post.category)),
+  ];
 
   return (
-    <div className="min-h-screen">
-      <section className="py-12">
-        <div className="container">
-          <h1 className="text-4xl font-bold mb-8">My Blog</h1>
-          
-          <div className="mb-8">
-            <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-              <div className="flex flex-wrap gap-2">
+    <div className='min-h-screen'>
+      <section className='py-12'>
+        <div className='container'>
+          <h1 className='text-4xl font-bold mb-8'>My Blog</h1>
+
+          <div className='mb-8'>
+            <div className='flex flex-col md:flex-row gap-4 items-start md:items-center justify-between'>
+              <div className='flex flex-wrap gap-2'>
                 {categories.map((category) => (
                   <Button
                     key={category}
-                    variant={activeCategory === category ? "default" : "outline"}
-                    size="sm"
+                    variant={
+                      activeCategory === category ? 'default' : 'outline'
+                    }
+                    size='sm'
                     onClick={() => setActiveCategory(category)}
                   >
                     {category}
                   </Button>
                 ))}
               </div>
-              <div className="w-full md:w-64">
+              <div className='w-full md:w-64'>
                 <Input
-                  placeholder="Search blog posts..."
+                  placeholder='Search blog posts...'
                   value={searchTerm}
                   onChange={handleSearch}
                 />
               </div>
             </div>
           </div>
-          
+
           {isLoading ? (
-            <div className="text-center p-12">
-              <p className="text-muted-foreground">Loading blog posts...</p>
+            <div className='text-center p-12'>
+              <p className='text-muted-foreground'>Loading blog posts...</p>
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {filterPosts().map((post: BlogPost) => (
                   <BlogCard
                     key={post.id}
@@ -94,10 +102,12 @@ const Blog = () => {
                   />
                 ))}
               </div>
-              
+
               {filterPosts().length === 0 && !isLoading && (
-                <div className="text-center p-12">
-                  <p className="text-muted-foreground">No blog posts found. Try a different search term.</p>
+                <div className='text-center p-12'>
+                  <p className='text-muted-foreground'>
+                    No blog posts found. Try a different search term.
+                  </p>
                 </div>
               )}
             </>

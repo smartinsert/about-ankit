@@ -1,56 +1,95 @@
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Link } from 'react-router-dom';
 
 const projects = [
   {
-    title: "Trading Order Book",
-    description: "Developed a high-performance order book system for tracking and matching trading orders in real-time, supporting thousands of transactions per second.",
-    technologies: ["Java", "Spring", "Redis", "Kafka"],
+    title: 'Trading Order Book',
+    description:
+      'Developed a high-performance order book system for tracking and matching trading orders in real-time, supporting thousands of transactions per second.',
+    technologies: ['Java', 'Spring'],
   },
   {
-    title: "Online Book Store",
-    description: "Built a full-stack e-commerce platform for selling books online, featuring user authentication, shopping cart functionality, and payment integration.",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+    title: 'Online Book Store',
+    description: 'Built a full-stack online book reading platform.',
+    technologies: ['React', 'Node.js', 'SQLite'],
   },
 ];
 
 const Projects = () => {
   return (
-    <div className="min-h-screen">
-      <section className="py-12">
-        <div className="container">
-          <h1 className="text-4xl font-bold mb-8">Projects</h1>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className='min-h-screen'>
+      <section className='py-12 relative overflow-hidden'>
+        <div className='absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5' />
+        <div className='container relative'>
+          <div className='code-block mb-4'>
+            <span className='text-muted-foreground'>// Featured Projects</span>
+          </div>
+          <h1 className='text-4xl font-bold mb-8 gradient-text'>Projects</h1>
+
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
             {projects.map((project, index) => (
-              <Card key={index} className="hover:shadow-md transition-shadow">
+              <Card
+                key={index}
+                className='group hover:shadow-lg transition-all relative overflow-hidden'
+              >
+                <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-accent/10 rounded-bl-full' />
                 <CardHeader>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
+                  <CardTitle className='text-xl group-hover:text-primary transition-colors'>
+                    <span className='text-muted-foreground'>&lt;</span>
+                    {project.title}
+                    <span className='text-muted-foreground'>/&gt;</span>
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="mb-4 text-muted-foreground">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <p className='mb-4 text-muted-foreground font-mono'>
+                    {project.description}
+                  </p>
+                  <div className='flex flex-wrap gap-2'>
                     {project.technologies.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="outline">{tech}</Badge>
+                      <Badge
+                        key={techIndex}
+                        variant='outline'
+                        className='font-mono group-hover:scale-105 transition-transform'
+                      >
+                        {tech}
+                      </Badge>
                     ))}
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-          
-          <div className="mt-12">
-            <h2 className="text-2xl font-bold mb-4">Other Projects</h2>
-            <p className="text-muted-foreground mb-6">
-              I've worked on numerous other projects throughout my career, many of which are proprietary
-              and cannot be shared in detail. These include financial trading systems, settlement
-              platforms, and data analytics dashboards for major financial institutions.
-            </p>
-            <p className="text-muted-foreground">
-              If you'd like to discuss my project experience in more detail, please feel free to
-              <a href="/contact" className="text-primary hover:underline ml-1">contact me</a>.
-            </p>
+
+          <div className='mt-12 relative'>
+            <div className='code-block mb-4'>
+              <span className='text-muted-foreground'>// Other Projects</span>
+            </div>
+            <h2 className='text-2xl font-bold mb-4 gradient-text'>
+              Other Projects
+            </h2>
+            <div className='bg-card/50 p-6 rounded-lg border border-border/50'>
+              <p className='text-muted-foreground mb-6 font-mono'>
+                I've worked on numerous other projects throughout my career,
+                many of which are proprietary and cannot be shared in detail.
+                These include financial trading systems, settlement platforms,
+                and data analytics dashboards for major financial institutions.
+              </p>
+              <p className='text-muted-foreground font-mono'>
+                If you'd like to discuss my project experience in more detail,
+                please feel free to{' '}
+                <Link
+                  to='/contact'
+                  className='text-primary hover:text-primary/80 transition-colors inline-flex items-center group'
+                >
+                  contact me
+                  <span className='ml-1 group-hover:translate-x-1 transition-transform'>
+                    →
+                  </span>
+                </Link>
+                .
+              </p>
+            </div>
           </div>
         </div>
       </section>

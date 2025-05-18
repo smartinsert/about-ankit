@@ -6,6 +6,7 @@ import { useToast } from '@/hooks/use-toast';
 import { blogService } from '@/services/blog-service';
 import { BlogPost } from '@/types/blog';
 import { useQuery } from '@tanstack/react-query';
+import EmptyBlogState from '@/components/empty-blog-state';
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -51,6 +52,20 @@ const Blog = () => {
     ...new Set(blogPosts.map((post: BlogPost) => post.category)),
   ];
 
+  if (isLoading) {
+    return (
+      <div className='container py-8'>
+        <div className='flex items-center justify-center min-h-[60vh]'>
+          <div className='animate-pulse text-muted-foreground'>Loading...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!blogPosts || blogPosts.length === 0) {
+    return <EmptyBlogState />;
+  }
+
   return (
     <div className='min-h-screen'>
       <section className='py-12'>
@@ -83,34 +98,26 @@ const Blog = () => {
             </div>
           </div>
 
-          {isLoading ? (
-            <div className='text-center p-12'>
-              <p className='text-muted-foreground'>Loading blog posts...</p>
-            </div>
-          ) : (
-            <>
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-                {filterPosts().map((post: BlogPost) => (
-                  <BlogCard
-                    key={post.id}
-                    id={post.id}
-                    title={post.title}
-                    excerpt={post.excerpt}
-                    date={post.date}
-                    category={post.category}
-                    imageUrl={post.imageUrl}
-                  />
-                ))}
-              </div>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            {filterPosts().map((post: BlogPost) => (
+              <BlogCard
+                key={post.id}
+                id={post.id}
+                title={post.title}
+                excerpt={post.excerpt}
+                date={post.date}
+                category={post.category}
+                imageUrl={post.imageUrl}
+              />
+            ))}
+          </div>
 
-              {filterPosts().length === 0 && !isLoading && (
-                <div className='text-center p-12'>
-                  <p className='text-muted-foreground'>
-                    No blog posts found. Try a different search term.
-                  </p>
-                </div>
-              )}
-            </>
+          {filterPosts().length === 0 && !isLoading && (
+            <div className='text-center p-12'>
+              <p className='text-muted-foreground'>
+                No blog posts found. Try a different search term.
+              </p>
+            </div>
           )}
         </div>
       </section>

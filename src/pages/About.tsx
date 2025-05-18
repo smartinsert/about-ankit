@@ -81,25 +81,18 @@ const About = () => {
             <div className='space-y-8'>
               <Card className='overflow-hidden group hover:shadow-lg transition-shadow'>
                 <div className='relative aspect-square bg-gradient-to-br from-primary/20 to-accent/20'>
-                  <div className='absolute inset-0 flex items-center justify-center'>
-                    <div className='text-center p-4'>
-                      <div className='w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-105 transition-transform'>
-                        <span className='text-4xl font-bold text-white font-mono'>
-                          AT
-                        </span>
-                      </div>
-                      <p className='text-sm text-muted-foreground font-mono'>
-                        // Photo coming soon
-                      </p>
-                    </div>
-                  </div>
+                  <img
+                    src='/public/logos/ankit.jpg'
+                    alt='Ankit Thakur'
+                    className='w-full h-full object-cover'
+                  />
                   <div className='absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background to-transparent' />
                 </div>
                 <CardContent className='p-4'>
                   <div className='flex justify-center space-x-4'>
                     <div className='text-center'>
                       <p className='text-2xl font-bold text-primary font-mono'>
-                        10+
+                        13+
                       </p>
                       <p className='text-sm text-muted-foreground'>
                         Years Experience
@@ -107,13 +100,13 @@ const About = () => {
                     </div>
                     <div className='text-center'>
                       <p className='text-2xl font-bold text-primary font-mono'>
-                        50+
+                        30+
                       </p>
                       <p className='text-sm text-muted-foreground'>Projects</p>
                     </div>
                     <div className='text-center'>
                       <p className='text-2xl font-bold text-primary font-mono'>
-                        3
+                        6
                       </p>
                       <p className='text-sm text-muted-foreground'>Companies</p>
                     </div>

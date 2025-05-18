@@ -53,7 +53,7 @@ const Contact = () => {
                   <div className='flex items-center'>
                     <Linkedin className='h-5 w-5 mr-3 text-primary' />
                     <a
-                      href='https://linkedin.com/in/ankit.thakur'
+                      href='https://www.linkedin.com/in/ankit-thakur-b599a522/'
                       target='_blank'
                       rel='noopener noreferrer'
                       className='hover:text-primary hover:underline'
@@ -64,7 +64,7 @@ const Contact = () => {
                   <div className='flex items-center'>
                     <Github className='h-5 w-5 mr-3 text-primary' />
                     <a
-                      href='https://github.com/ankit.thakur'
+                      href='https://github.com/smartinsert'
                       target='_blank'
                       rel='noopener noreferrer'
                       className='hover:text-primary hover:underline'

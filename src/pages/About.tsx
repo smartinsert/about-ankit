@@ -82,7 +82,7 @@ const About = () => {
               <Card className='overflow-hidden group hover:shadow-lg transition-shadow'>
                 <div className='relative aspect-square bg-gradient-to-br from-primary/20 to-accent/20'>
                   <img
-                    src='/public/logos/ankit.jpg'
+                    src='/logos/ankit.jpg'
                     alt='Ankit Thakur'
                     className='w-full h-full object-cover'
                   />

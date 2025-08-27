@@ -81,8 +81,7 @@ const Contact = () => {
                 </CardHeader>
                 <CardContent>
                   <p className='text-muted-foreground'>
-                    Based in Bengaluru, India. Available for remote work and
-                    collaborations worldwide.
+                    Based in Bengaluru, India.
                   </p>
                 </CardContent>
               </Card>

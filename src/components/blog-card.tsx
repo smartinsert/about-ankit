@@ -1,48 +1,40 @@
-
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
-
 interface BlogCardProps {
   id: string;
   title: string;
   excerpt: string;
   date: string;
   category: string;
-  imageUrl?: string;
+  imageUrl: string;
+  externalUrl?: string; // optional external link
 }
 
-const BlogCard = ({ id, title, excerpt, date, category, imageUrl }: BlogCardProps) => {
+const BlogCard = ({
+  id,
+  title,
+  excerpt,
+  date,
+  category,
+  imageUrl,
+  externalUrl,
+}: BlogCardProps) => {
   return (
-    <Card className="overflow-hidden hover:shadow-md transition-shadow">
-      {imageUrl && (
-        <div className="aspect-video w-full overflow-hidden">
-          <img
-            src={imageUrl}
-            alt={title}
-            className="h-full w-full object-cover transition-all hover:scale-105"
-          />
-        </div>
-      )}
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <Badge variant="outline">{category}</Badge>
-          <time className="text-sm text-muted-foreground">{date}</time>
-        </div>
-        <CardTitle className="line-clamp-2 text-xl">{title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="line-clamp-3 text-muted-foreground">{excerpt}</p>
-      </CardContent>
-      <CardFooter>
-        <Link
-          to={`/blog/${id}`}
-          className="inline-flex items-center text-sm font-medium text-primary hover:underline"
-        >
-          Read more
-        </Link>
-      </CardFooter>
-    </Card>
+    <a
+      href={externalUrl || `/blog/${id}`}
+      target={externalUrl ? '_blank' : '_self'}
+      rel={externalUrl ? 'noopener noreferrer' : undefined}
+      className='block rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow'
+    >
+      <img
+        src={imageUrl}
+        alt={title}
+        className='w-full h-48 object-cover'
+      />
+      <div className='p-4'>
+        <h3 className='text-xl font-semibold mb-2'>{title}</h3>
+        <p className='text-muted-foreground mb-4'>{excerpt}</p>
+        <p className='text-sm font-mono text-gray-500'>{date}</p>
+      </div>
+    </a>
   );
 };
 

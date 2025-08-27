@@ -13,6 +13,19 @@ const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const { toast } = useToast();
 
+  const mediumBlogPost = {
+    id: 'medium-thinking-generically',
+    title: 'Thinking Generically',
+    excerpt:
+      'A deep dive into generic programming concepts and patterns to write reusable code effectively.',
+    date: '2023-03-25',
+    category: 'Programming',
+    imageUrl:
+      'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*YwvcdCHDwjFgVTV-26w1DA.jpeg',
+    externalUrl:
+      'https://medium.com/@ankitccb/thinking-generically-e7cbbf13e365',
+  };
+
   // Fetch blog posts using React Query
   const {
     data: blogPosts = [],
@@ -37,8 +50,12 @@ const Blog = () => {
     setSearchTerm(e.target.value);
   };
 
+  const externalPosts = [mediumBlogPost];
+
+  const allPosts = [...externalPosts, ...blogPosts];
+
   const filterPosts = () => {
-    return blogPosts.filter(
+    return allPosts.filter(
       (post) =>
         (activeCategory === 'All' || post.category === activeCategory) &&
         (post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -62,7 +79,7 @@ const Blog = () => {
     );
   }
 
-  if (!blogPosts || blogPosts.length === 0) {
+  if (!allPosts || allPosts.length === 0) {
     return <EmptyBlogState />;
   }
 
@@ -108,6 +125,7 @@ const Blog = () => {
                 date={post.date}
                 category={post.category}
                 imageUrl={post.imageUrl}
+                externalUrl={post.externalUrl}
               />
             ))}
           </div>

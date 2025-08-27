@@ -8,11 +8,20 @@ const projects = [
     description:
       'Developed a high-performance order book system for tracking and matching trading orders in real-time, supporting thousands of transactions per second.',
     technologies: ['Java', 'Spring'],
+    githubUrl: 'https://github.com/smartinsert/about-ankit',
   },
   {
     title: 'Online Book Store',
     description: 'Built a full-stack online book reading platform.',
     technologies: ['React', 'Node.js', 'SQLite'],
+    githubUrl: 'https://github.com/smartinsert/kindle-library',
+  },
+  {
+    title: 'High Performance Asset Service',
+    description:
+      'A high-performance distributed asset management system demonstrating gRPC streaming, multi-level caching, and managed channel round-robin concurrent batch requests.',
+    technologies: ['Java', 'Spring', 'Redis', 'gRPC'],
+    githubUrl: 'https://github.com/smartinsert/high-performance-asset-service',
   },
 ];
 
@@ -36,9 +45,30 @@ const Projects = () => {
                 <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-accent/10 rounded-bl-full' />
                 <CardHeader>
                   <CardTitle className='text-xl group-hover:text-primary transition-colors'>
-                    <span className='text-muted-foreground'>&lt;</span>
-                    {project.title}
-                    <span className='text-muted-foreground'>/&gt;</span>
+                    <a
+                      href={project.githubUrl}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='inline-flex items-center gap-1'
+                    >
+                      <span className='text-muted-foreground'>&lt;</span>
+                      {project.title}
+                      <span className='text-muted-foreground'>/&gt;</span>
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        className='h-4 w-4 ml-1 text-blue-600'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          d='M14 3h7m0 0v7m0-7L10 14'
+                        />
+                      </svg>
+                    </a>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>

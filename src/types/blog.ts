@@ -1,4 +1,3 @@
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -9,4 +8,5 @@ export interface BlogPost {
   imageUrl: string;
   slug?: string;
   published?: boolean;
+  externalUrl?: string;
 }

@@ -42,10 +42,8 @@ const About = () => {
                   </p>
                   <p>
                     In my current role at Goldman Sachs, I lead engineering
-                    efforts for the Marquee platform, focusing on MarketFeed
-                    performance optimization and UI enhancements. Prior to this,
-                    I worked at Morgan Stanley where I contributed to migrating
-                    and scaling their global settlements platform.
+                    efforts for the Marquee platform, focusing on building and
+                    optimizing user facing flagship products.
                   </p>
                 </CardContent>
               </Card>

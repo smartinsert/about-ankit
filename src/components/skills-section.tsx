@@ -50,6 +50,7 @@ const skillCategories: SkillCategory[] = [
       { name: 'MongoDB' },
       { name: 'DynamoDB' },
       { name: 'EventStore' },
+      { name: 'Redis' },
     ],
   },
 ];

@@ -8,7 +8,7 @@ const projects = [
     description:
       'Developed a high-performance order book system for tracking and matching trading orders in real-time, supporting thousands of transactions per second.',
     technologies: ['Java', 'Spring'],
-    githubUrl: 'https://github.com/smartinsert/about-ankit',
+    githubUrl: 'https://github.com/smartinsert/SimpleOrderBook',
   },
   {
     title: 'Online Book Store',

@@ -1,4 +1,4 @@
-import Hero from '@/components/hero';
+import Hero from '@/components/Hero';
 import SkillsSection from '@/components/skills-section';
 import ExperienceCard from '@/components/experience-card';
 import { Button } from '@/components/ui/button';

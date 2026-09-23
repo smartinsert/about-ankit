@@ -41,9 +41,9 @@ const About = () => {
                     and Node.js.
                   </p>
                   <p>
-                    In my current role at Goldman Sachs, I lead engineering
-                    efforts for the Marquee platform, focusing on building and
-                    optimizing user facing flagship products.
+                    In my current role at Caxton Associates, I serve as a Senior Quantitative Developer
+                    with responsibilities spanning from building out the Quantitative analytics infrastructure
+                    and the Quant development team in Bangalore.
                   </p>
                 </CardContent>
               </Card>

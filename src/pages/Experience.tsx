@@ -1,11 +1,22 @@
 import ExperienceCard from '@/components/experience-card';
 
 const Experience = () => {
-  const experiences = [
+    const experiences = [
+  {
+        company: 'Caxton Associates',
+        position: 'Vice President - Senior Quantitative Developer',
+        duration: 'May 2026 - Present',
+        location: 'Bengaluru, India',
+        responsibilities: [
+          'Modularized and uplifted IR derivatives analytics library, which forms the backbone of multi-million dollar trading strategies, allowing countable diff upgrades from the vendor, reducing the upgrade time by >3 weeks',
+          'Reduced STIR fixture full calibration latency by 0.5 s per run.',
+          'Built a web native risk monitoring dashboard used across 180 PMs for FX and IR derivatives, with 500-700 ms API response times.',
+        ],
+      },
     {
       company: 'Goldman Sachs',
       position: 'Vice President - Marquee',
-      duration: 'November 2022 - Present',
+      duration: 'November 2022 - May 2026',
       location: 'Bengaluru, India',
       responsibilities: [
         'Optimized MarketFeed performance, reducing load time for 40 items per page from 4s to 200ms, significantly improving user experience.',
